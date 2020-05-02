@@ -45,6 +45,9 @@ def run():
                     ship.move_down(False)
                 elif event.key == pygame.K_UP:
                     ship.move_up(False)
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if start_button.rect.collidepoint(event.pos):
+                    game_playing = True
 
         screen.fill((200, 200, 200))
 
