@@ -6,6 +6,7 @@ from box import Box
 from ship import Ship
 from bullet import Bullet
 from welcome_message import WelcomeMessage
+from start_button import StartButton
 
 def run():
     pygame.init()
@@ -15,6 +16,7 @@ def run():
     pygame.display.set_caption('Target Pratice')
 
     welcome_message = WelcomeMessage('Welcome to Target Practice!', screen)
+    start_button = StartButton(screen)
 
     box = Box(screen)
     ship = Ship(screen)
@@ -62,6 +64,7 @@ def run():
                     bullets.remove(bullet)
         else:
             screen.blit(welcome_message.image, welcome_message.rect)
+            screen.fill(start_button.color, start_button.rect)
 
         pygame.display.flip()
 

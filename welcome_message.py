@@ -7,4 +7,5 @@ class WelcomeMessage:
         self.color = (0, 0, 0)
         self.image = self.font.render(message, True, self.color)
         self.rect = self.image.get_rect()
-        self.rect.center = screen.get_rect().center
+        self.rect.centerx = screen.get_rect().centerx
+        self.rect.centery = screen.get_rect().centery - 100
