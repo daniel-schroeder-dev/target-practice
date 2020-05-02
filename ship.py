@@ -34,6 +34,13 @@ class Ship(pygame.sprite.Sprite):
     def is_touching_top_screen(self):
         return self.rect.top <= 0
 
+    def reset(self):
+        self.rect.centery = self.screen.get_rect().centery
+        self.rect.left = 0
+
+        self.moving_down = False
+        self.moving_up = False
+
     def update(self):
         if self.moving_down and not self.is_touching_bottom_screen():
             self.rect.y += self.speed

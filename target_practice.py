@@ -78,6 +78,8 @@ def run():
             if num_misses is 3:
                 game_playing = False
                 num_misses = 0
+                ship.reset()
+                box.reset()
 
         else:
             screen.blit(welcome_message.image, welcome_message.rect)
