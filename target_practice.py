@@ -64,7 +64,7 @@ def run():
                     bullets.remove(bullet)
         else:
             screen.blit(welcome_message.image, welcome_message.rect)
-            screen.fill(start_button.color, start_button.rect)
+            start_button.draw()
 
         pygame.display.flip()
 
