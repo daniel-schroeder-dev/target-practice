@@ -1,6 +1,6 @@
 import pygame
 
-class Box(pygame.sprite.Sprite):
+class Target(pygame.sprite.Sprite):
 
     def __init__(self, screen):
         super().__init__()

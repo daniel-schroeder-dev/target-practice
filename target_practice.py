@@ -2,7 +2,7 @@ import sys
 
 import pygame
 
-from box import Box
+from target import Target
 from ship import Ship
 from bullet import Bullet
 from welcome_message import WelcomeMessage
@@ -18,7 +18,7 @@ def run():
     welcome_message = WelcomeMessage('Welcome to Target Practice!', screen)
     start_button = StartButton(screen)
 
-    box = Box(screen)
+    target = Target(screen)
     ship = Ship(screen)
     bullets = pygame.sprite.Group()
 
@@ -55,15 +55,15 @@ def run():
         screen.fill((200, 200, 200))
 
         if game_playing:
-            box.update()
-            screen.fill(box.color, box.rect)
+            target.update()
+            screen.fill(target.color, target.rect)
 
             ship.update()
             ship.draw()
 
             bullets.update()
 
-            bullet_hits = pygame.sprite.spritecollide(box, bullets, True)
+            bullet_hits = pygame.sprite.spritecollide(target, bullets, True)
 
             if len(bullet_hits):
                 num_hits += 1
@@ -79,8 +79,7 @@ def run():
                 game_playing = False
                 num_misses = 0
                 ship.reset()
-                box.reset()
-
+                target.reset()
         else:
             screen.blit(welcome_message.image, welcome_message.rect)
             start_button.draw()
