@@ -24,6 +24,9 @@ def run():
 
     game_playing = False
 
+    num_misses = 0
+    num_hits = 0
+
     while True:
 
         clock.tick(30)
@@ -60,11 +63,22 @@ def run():
 
             bullets.update()
 
+            bullet_hits = pygame.sprite.spritecollide(box, bullets, True)
+
+            if len(bullet_hits):
+                num_hits += 1
+
             for bullet in bullets.copy():
                 if bullet.rect.left < screen.get_rect().right:
                     screen.fill(bullet.color, bullet.rect)
                 else:
                     bullets.remove(bullet)
+                    num_misses += 1
+
+            if num_misses is 3:
+                game_playing = False
+                num_misses = 0
+
         else:
             screen.blit(welcome_message.image, welcome_message.rect)
             start_button.draw()
