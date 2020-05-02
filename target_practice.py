@@ -5,6 +5,7 @@ import pygame
 from box import Box
 from ship import Ship
 from bullet import Bullet
+from welcome_message import WelcomeMessage
 
 def run():
     pygame.init()
@@ -12,6 +13,8 @@ def run():
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((600, 600))
     pygame.display.set_caption('Target Pratice')
+
+    welcome_message = WelcomeMessage('Welcome to Target Practice!', screen)
 
     box = Box(screen)
     ship = Ship(screen)
@@ -57,6 +60,8 @@ def run():
                     screen.fill(bullet.color, bullet.rect)
                 else:
                     bullets.remove(bullet)
+        else:
+            screen.blit(welcome_message.image, welcome_message.rect)
 
         pygame.display.flip()
 
