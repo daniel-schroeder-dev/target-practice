@@ -26,6 +26,9 @@ def run():
 
     num_misses = 0
     num_hits = 0
+    level_num = 1
+
+    num_hits_to_level_up = 3
 
     while True:
 
@@ -67,6 +70,12 @@ def run():
 
             if len(bullet_hits):
                 num_hits += 1
+                if num_hits == num_hits_to_level_up:
+                    num_hits = 0
+                    num_misses = 0
+                    num_hits_to_level_up += 1
+                    level_num += 1
+                    target.speed += 2
 
             for bullet in bullets.copy():
                 if bullet.rect.left < screen.get_rect().right:
@@ -78,9 +87,14 @@ def run():
             if num_misses is 3:
                 game_playing = False
                 num_misses = 0
+                num_hits = 0
+                level_num = 1
+                num_hits_to_level_up = 3
+                target.speed = 5
                 ship.reset()
                 target.reset()
                 bullets.empty()
+
         else:
             screen.blit(welcome_message.image, welcome_message.rect)
             start_button.draw()
