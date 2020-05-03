@@ -80,6 +80,7 @@ def run():
                 num_misses = 0
                 ship.reset()
                 target.reset()
+                bullets.empty()
         else:
             screen.blit(welcome_message.image, welcome_message.rect)
             start_button.draw()
